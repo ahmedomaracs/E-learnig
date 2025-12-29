@@ -1,7 +1,97 @@
 @import "tailwindcss";
 
 @layer base {
+  :root {
+    /* Soft Academic Blue - Background Colors */
+    --bg-main: #F7F9FC;
+    --bg-surface: #FFFFFF;
+    --bg-secondary: #EEF2F6;
+    --border-color: #D9E1EC;
+
+    /* Typography Colors */
+    --text-primary: #1E293B;
+    --text-secondary: #475569;
+    --text-muted: #94A3B8;
+    --text-disabled: #CBD5E1;
+
+    /* Brand Colors */
+    --brand-primary: #2563EB;
+    --brand-primary-hover: #1D4ED8;
+    --brand-primary-active: #1E40AF;
+    --brand-accent: #14B8A6;
+    --brand-accent-hover: #0D9488;
+
+    /* Component Colors */
+    --border-light: #E2E8F0;
+    --rating-gold: #F59E0B;
+    --error-red: #DC2626;
+    --success-green: #16A34A;
+
+    /* Footer Dark */
+    --footer-bg: #0F172A;
+    --footer-text: #CBD5E1;
+    --footer-link: #60A5FA;
+    --footer-divider: #1E293B;
+
+    /* Motion Design Tokens */
+    --ease-standard: cubic-bezier(0.4, 0, 0.2, 1);
+    --ease-out: cubic-bezier(0, 0, 0.2, 1);
+    --ease-in-out: cubic-bezier(0.4, 0, 0.6, 1);
+
+    --duration-instant: 100ms;
+    --duration-fast: 150ms;
+    --duration-normal: 250ms;
+    --duration-slow: 400ms;
+  }
+
   body {
     @apply bg-gray-50 text-gray-900;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+  }
+
+  /* Smooth Scrolling */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Reduced Motion Support - Accessibility */
+  @media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+@layer utilities {
+
+  /* Keyframe Animations */
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(24px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes slideInRight {
+    from {
+      opacity: 0;
+      transform: translateX(20px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
   }
 }

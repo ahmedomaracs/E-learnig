@@ -1,53 +1,88 @@
+// App.jsx - Main application with auth integration
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
-import { AuthProvider, useAuth } from './context/AuthContext';
-import AuthPage from './pages/AuthPage';
-import MainLayout from './layouts/MainLayout';
-import Dashboard from './pages/dashboard/Dashboard';
-import Courses from './pages/courses/Courses';
-import Profile from './pages/profile/Profile';
-
-// Protected Route Wrapper
-const ProtectedRoute = ({ children }) => {
-  const { user, loading } = useAuth();
-
-  if (loading) {
-    return <div>Loading...</div>; // Or a proper loading spinner
-  }
-
-  if (!user) {
-    return <Navigate to="/login" replace />;
-  }
-
-  return children;
-};
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { AuthProvider } from './auth/context/AuthContext';
+import ProtectedRoute from './auth/components/ProtectedRoute';
+import LoginPage from './auth/pages/LoginPage';
+import SignupPage from './auth/pages/SignupPage';
+import Layout from './components/layout/Layout';
+import HomePage from './pages/HomePage';
+import CourseDetailsPage from './pages/CourseDetailsPage';
+import CourseCatalogPage from './pages/CourseCatalogPage';
+import MyCoursesPage from './student/pages/MyCoursesPage';
+import CoursePlayerPage from './student/pages/CoursePlayerPage';
+import NotFoundPage from './pages/NotFoundPage';
+import LecturerRoute from './auth/components/LecturerRoute';
+import LecturerDashboard from './lecturer/pages/LecturerDashboard';
+import LecturerCourses from './lecturer/pages/LecturerCourses';
+import CreateCourse from './lecturer/pages/CreateCourse';
+import { Outlet } from 'react-router-dom';
 
 function App() {
-  return (
-    <AuthProvider>
-      <Router>
-        <Routes>
-          {/* Public Routes */}
-          <Route path="/login" element={<AuthPage />} />
+    return (
+        <BrowserRouter>
+            <AuthProvider>
+                <Routes>
+                    {/* Public Routes */}
+                    <Route path="/login" element={<LoginPage />} />
+                    <Route path="/signup" element={<SignupPage />} />
 
-          {/* Protected Routes */}
-          <Route path="/" element={
-            <ProtectedRoute>
-              <MainLayout />
-            </ProtectedRoute>
-          }>
-            <Route index element={<Navigate to="/dashboard" replace />} />
-            <Route path="dashboard" element={<Dashboard />} />
-            <Route path="courses" element={<Courses />} />
-            <Route path="profile" element={<Profile />} />
-          </Route>
+                    {/* Routes with Layout */}
+                    <Route path="/" element={<Layout />}>
+                        <Route index element={<HomePage />} />
+                        <Route path="catalog" element={<CourseCatalogPage />} />
+                        <Route path="courses" element={<Navigate to="/catalog" replace />} />
 
-          {/* Catch all - redirect to login */}
-          <Route path="*" element={<Navigate to="/login" replace />} />
-        </Routes>
-      </Router>
-    </AuthProvider>
-  );
+                        {/* Protected Routes */}
+                        <Route
+                            path="course/:id"
+                            element={
+                                <ProtectedRoute>
+                                    <CourseDetailsPage />
+                                </ProtectedRoute>
+                            }
+                        />
+                        <Route
+                            path="my-courses"
+                            element={
+                                <ProtectedRoute>
+                                    <MyCoursesPage />
+                                </ProtectedRoute>
+                            }
+                        />
+                        <Route
+                            path="course/:id/learn"
+                            element={
+                                <ProtectedRoute>
+                                    <CoursePlayerPage />
+                                </ProtectedRoute>
+                            }
+                        />
+
+                        {/* Lecturer Routes */}
+                        <Route
+                            path="lecturer"
+                            element={
+                                <LecturerRoute>
+                                    <React.Fragment>
+                                        {/* Optional: Add a Lecturer Layout here later */}
+                                        <Outlet />
+                                    </React.Fragment>
+                                </LecturerRoute>
+                            }
+                        >
+                            <Route path="dashboard" element={<LecturerDashboard />} />
+                            <Route path="courses" element={<LecturerCourses />} />
+                            <Route path="create-course" element={<CreateCourse />} />
+                            <Route index element={<Navigate to="dashboard" replace />} />
+                        </Route>
+
+                        <Route path="*" element={<NotFoundPage />} />
+                    </Route>
+                </Routes>
+            </AuthProvider>
+        </BrowserRouter>
+    );
 }
 
 export default App;
