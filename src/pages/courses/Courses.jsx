@@ -52,7 +52,7 @@ const Courses = () => {
                                                     Progress
                                                 </span>
                                             </div>
-                                            <div className="text-right">
+                                            <div className="text-end">
                                                 <span className="text-xs font-semibold inline-block text-indigo-600">
                                                     {course.progress}%
                                                 </span>

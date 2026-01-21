@@ -44,7 +44,7 @@ const Accordion = ({ sections }) => {
                                 >
                                     ▶
                                 </span>
-                                <span className="font-semibold text-left" style={{ color: 'var(--text-primary)' }}>
+                                <span className="font-semibold text-start" style={{ color: 'var(--text-primary)' }}>
                                     {section.title}
                                 </span>
                             </div>

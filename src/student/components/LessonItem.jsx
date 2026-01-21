@@ -5,17 +5,17 @@ const LessonItem = ({ lesson, isActive, isCompleted, onClick }) => {
     return (
         <button
             onClick={() => onClick(lesson)}
-            className={`w-full text-left px-4 py-3 flex items-start gap-3 transition-colors duration-200 ${isActive
-                    ? 'bg-blue-50 border-r-4 border-blue-600'
-                    : 'hover:bg-gray-50 border-b border-gray-50'
+            className={`w-full text-start px-4 py-3 flex items-start gap-3 transition-colors duration-200 ${isActive
+                ? 'bg-blue-50 border-e-4 border-blue-600'
+                : 'hover:bg-gray-50 border-b border-gray-50'
                 } focus:outline-none focus:bg-gray-50`}
             aria-current={isActive ? 'step' : undefined}
         >
             <div className="mt-1 flex-shrink-0">
                 <div
                     className={`w-5 h-5 rounded-full border flex items-center justify-center transition-colors ${isCompleted
-                            ? 'bg-green-500 border-green-500 text-white'
-                            : 'border-gray-400 text-transparent'
+                        ? 'bg-green-500 border-green-500 text-white'
+                        : 'border-gray-400 text-transparent'
                         }`}
                 >
                     <span className="text-xs font-bold">✓</span>

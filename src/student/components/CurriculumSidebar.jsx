@@ -13,7 +13,7 @@ const CurriculumSidebar = ({ sections, currentLessonId, onSelectLesson, complete
     };
 
     return (
-        <div className="h-full flex flex-col bg-white border-r border-gray-200 overflow-hidden">
+        <div className="h-full flex flex-col bg-white border-e border-gray-200 overflow-hidden">
             <div className="p-4 border-b border-gray-200 bg-gray-50">
                 <h3 className="font-bold text-gray-900">Course Content</h3>
             </div>
@@ -26,7 +26,7 @@ const CurriculumSidebar = ({ sections, currentLessonId, onSelectLesson, complete
                             onClick={() => toggleSection(sectionIndex)}
                             className="w-full bg-gray-100 px-4 py-3 border-b border-gray-200 flex justify-between items-center hover:bg-gray-200 transition-colors focus:outline-none"
                         >
-                            <h4 className="font-semibold text-sm text-gray-800 truncate pr-2">
+                            <h4 className="font-semibold text-sm text-gray-800 truncate pe-2">
                                 Section {sectionIndex + 1}: {section.title}
                             </h4>
                             <span className={`transform transition-transform duration-200 text-gray-500 ${openSections[sectionIndex] ? 'rotate-180' : ''}`}>

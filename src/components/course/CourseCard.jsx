@@ -82,7 +82,7 @@ const CourseCard = ({ course }) => {
                             ) : (
                                 <>
                                     <span
-                                        className="font-bold text-lg mr-2"
+                                        className="font-bold text-lg me-2"
                                         style={{ color: 'var(--brand-primary)' }}
                                     >
                                         ${price}

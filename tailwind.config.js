@@ -5,7 +5,15 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        brand: ["Cairo", "sans-serif"],
+        heading: ["IBM Plex Arabic", "sans-serif"],
+        body: ["Tajawal", "sans-serif"]
+      },
+    },
   },
-  plugins: [],
+  plugins: [
+    require("tailwindcss-rtl"),
+  ],
 }

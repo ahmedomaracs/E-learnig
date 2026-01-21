@@ -1,0 +1,102 @@
+{
+    "login": "Login",
+    "signup": "Sign Up",
+    "myCourses": "My Courses",
+    "continueLearning": "Continue Learning",
+    "lecturer": "Lecturer",
+    "student": "Student",
+    "email": "Email",
+    "password": "Password",
+    "confirmPassword": "Confirm Password",
+    "fullName": "Full Name",
+    "alreadyHaveAccount": "Already have an account?",
+    "dontHaveAccount": "Don't have an account?",
+    "loginButton": "Login",
+    "signupButton": "Sign Up",
+    "logout": "Logout",
+    "home": "Home",
+    "allCourses": "All Courses",
+    "myLearning": "My Learning",
+    "dashboard": "Dashboard",
+    "about": "About",
+    "contact": "Contact",
+    "teachOnApp": "I want to teach on E-Learning",
+    "instructorSubtext": "Create courses and earn money as an instructor",
+    "name": "Name",
+    "heroTitle": "Learn Skills That Get You Hired",
+    "heroSubtitle": "Online courses in programming, data, and business taught by industry experts",
+    "startLearning": "Start Learning",
+    "browseCourses": "Browse Courses",
+    "trustedBy": "TRUSTED BY LEARNERS FROM",
+    "stats": {
+        "students": "Students",
+        "courses": "Courses",
+        "instructors": "Instructors",
+        "rating": "Average Rating"
+    },
+    "featuredCourses": {
+        "title": "Learn from the best",
+        "subtitle": "Explore our most popular courses taught by industry experts",
+        "viewAll": "View All Courses →"
+    },
+    "howItWorks": {
+        "title": "How It Works",
+        "subtitle": "Start learning in just four simple steps",
+        "step1": {
+            "title": "Choose a Course",
+            "desc": "Browse 1,200+ courses"
+        },
+        "step2": {
+            "title": "Learn at Your Pace",
+            "desc": "Study anytime, anywhere"
+        },
+        "step3": {
+            "title": "Get Certified",
+            "desc": "Earn industry certificates"
+        },
+        "step4": {
+            "title": "Apply Skills",
+            "desc": "Build real projects"
+        }
+    },
+    "cta": {
+        "title": "Start Your Learning Journey Today",
+        "subtitle": "Join 50,000+ students already learning new skills",
+        "buttonLoggedOut": "Sign Up Free",
+        "buttonLoggedIn": "Browse Courses"
+    },
+    "footer": {
+        "about": "About",
+        "aboutUs": "About Us",
+        "careers": "Careers",
+        "press": "Press",
+        "support": "Support",
+        "contact": "Contact",
+        "helpCenter": "Help Center",
+        "faq": "FAQ",
+        "legal": "Legal",
+        "privacyPolicy": "Privacy Policy",
+        "termsConditions": "Terms & Conditions",
+        "cookiePolicy": "Cookie Policy",
+        "followUs": "Follow Us",
+        "copyright": "© 2025 E-Learning Platform. All rights reserved."
+    },
+    "brandName": "EduAcademy",
+    "dashboardOverview": "Dashboard Overview",
+    "overview": "Overview",
+    "analytics": "Analytics",
+    "settings": "Settings",
+    "students": "Students",
+    "revenue": "Revenue",
+    "enrollments": "Enrollments",
+    "progress": "Progress",
+    "lastActive": "Last Active",
+    "viewCourse": "View Course",
+    "curriculum": "Curriculum",
+    "createCourse": "Create New Course",
+    "recentActivity": "Recent Activity",
+    "quickActions": "Quick Actions",
+    "studentMessages": "Student Messages",
+    "earningsReport": "Earnings Report",
+    "vsLastMonth": "vs last month"
+}

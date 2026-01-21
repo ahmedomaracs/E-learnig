@@ -19,7 +19,7 @@ const CourseSidebar = ({ course, isEnrolled, onEnroll }) => {
                     />
                     <div className="absolute inset-0 flex items-center justify-center">
                         <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center shadow-xl cursor-pointer transform group-hover:scale-110 transition">
-                            <span className="text-2xl text-black ml-1">▶</span>
+                            <span className="text-2xl text-black ms-1">▶</span>
                         </div>
                     </div>
                 </div>

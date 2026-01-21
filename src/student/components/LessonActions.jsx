@@ -29,7 +29,7 @@ const LessonActions = ({ isCompleted, onToggleComplete, onNext, hasNext }) => {
                 </Button>
             )}
 
-            <div className="ml-auto text-sm text-gray-500">
+            <div className="ms-auto text-sm text-gray-500">
                 Need help? <a href="#" className="text-blue-600 hover:underline">Ask in Q&A</a>
             </div>
         </div>

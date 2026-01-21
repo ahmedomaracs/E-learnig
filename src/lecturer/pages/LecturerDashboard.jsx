@@ -1,19 +1,21 @@
 // LecturerDashboard.jsx - Main control center for lecturers
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import Container from '../../components/common/Container';
+import { useTranslation } from 'react-i18next';
 import Button from '../../components/common/Button';
 import StatsCard from '../components/StatsCard';
+import LecturerSidebar from '../components/LecturerSidebar';
 
 const LecturerDashboard = () => {
     const navigate = useNavigate();
+    const { t } = useTranslation();
 
     // Mock data - In production this would come from an API
     const stats = [
-        { title: 'Total Revenue', value: '$12,450', icon: '💰', trend: 12, color: 'green' },
-        { title: 'Total Students', value: '1,240', icon: '👥', trend: 5, color: 'blue' },
-        { title: 'Average Rating', value: '4.8', icon: '⭐', trend: 0.2, color: 'orange' },
-        { title: 'Active Courses', value: '4', icon: '📚', trend: 0, color: 'purple' }
+        { title: t('revenue'), value: '$12,450', icon: '💰', trend: 12, color: 'green' },
+        { title: t('stats.students'), value: '1,240', icon: '👥', trend: 5, color: 'blue' },
+        { title: t('stats.rating'), value: '4.8', icon: '⭐', trend: 0.2, color: 'orange' },
+        { title: t('stats.courses'), value: '4', icon: '📚', trend: 0, color: 'purple' }
     ];
 
     const recentActivity = [
@@ -23,25 +25,25 @@ const LecturerDashboard = () => {
     ];
 
     return (
-        <div className="bg-gray-50 min-h-screen pb-12">
-            <div className="bg-white border-b border-gray-200 mb-8">
-                <Container>
-                    <div className="py-8 flex justify-between items-center">
-                        <div>
-                            <h1 className="text-2xl font-bold text-gray-900">Lecturer Dashboard</h1>
-                            <p className="text-gray-500">Welcome back, managing your courses and students.</p>
-                        </div>
-                        <Button
-                            variant="primary"
-                            onClick={() => navigate('/lecturer/create-course')}
-                        >
-                            + Create New Course
-                        </Button>
-                    </div>
-                </Container>
-            </div>
+        <div className="bg-gray-50 min-h-screen flex">
+            {/* Sidebar */}
+            <LecturerSidebar />
 
-            <Container>
+            {/* Main Content */}
+            <main className="flex-1 p-8">
+                <div className="flex justify-between items-center mb-8">
+                    <div>
+                        <h1 className="text-2xl font-bold text-gray-900 font-heading">{t('dashboardOverview')}</h1>
+                        <p className="text-gray-500 mt-1">{t('instructorSubtext')}</p>
+                    </div>
+                    <Button
+                        variant="primary"
+                        onClick={() => navigate('/lecturer/create-course')}
+                    >
+                        + {t('createCourse', 'Create New Course')}
+                    </Button>
+                </div>
+
                 {/* Stats Grid */}
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
                     {stats.map((stat, index) => (
@@ -52,11 +54,11 @@ const LecturerDashboard = () => {
                 <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
                     {/* Recent Activity */}
                     <div className="lg:col-span-2 bg-white rounded-xl shadow-sm border border-gray-100 p-6">
-                        <h2 className="text-lg font-bold text-gray-900 mb-4">Recent Activity</h2>
+                        <h2 className="text-lg font-bold text-gray-900 mb-4 font-heading">{t('recentActivity', 'Recent Activity')}</h2>
                         <div className="space-y-4">
                             {recentActivity.map((activity) => (
                                 <div key={activity.id} className="flex items-center p-3 hover:bg-gray-50 rounded-lg transition-colors">
-                                    <div className="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 font-bold mr-4">
+                                    <div className="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 font-bold me-4">
                                         {activity.user.charAt(0)}
                                     </div>
                                     <div>
@@ -75,24 +77,24 @@ const LecturerDashboard = () => {
 
                     {/* Quick Actions */}
                     <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
-                        <h2 className="text-lg font-bold text-gray-900 mb-4">Quick Actions</h2>
+                        <h2 className="text-lg font-bold text-gray-900 mb-4 font-heading">{t('quickActions', 'Quick Actions')}</h2>
                         <div className="space-y-3">
-                            <Button variant="secondary" className="w-full justify-start text-left" onClick={() => navigate('/lecturer/courses')}>
-                                📚 My Courses
+                            <Button variant="secondary" className="w-full justify-start text-start" onClick={() => navigate('/lecturer/courses')}>
+                                📚 {t('myCourses')}
                             </Button>
-                            <Button variant="secondary" className="w-full justify-start text-left">
-                                💬 Student Messages
+                            <Button variant="secondary" className="w-full justify-start text-start">
+                                💬 {t('studentMessages', 'Student Messages')}
                             </Button>
-                            <Button variant="secondary" className="w-full justify-start text-left">
-                                💰 Earnings Report
+                            <Button variant="secondary" className="w-full justify-start text-start">
+                                💰 {t('earningsReport', 'Earnings Report')}
                             </Button>
-                            <Button variant="secondary" className="w-full justify-start text-left">
-                                ⚙️ Settings
+                            <Button variant="secondary" className="w-full justify-start text-start">
+                                ⚙️ {t('settings')}
                             </Button>
                         </div>
                     </div>
                 </div>
-            </Container>
+            </main>
         </div>
     );
 };
