@@ -1,7 +1,10 @@
 // StatsCard.jsx - Reusable metric card for dashboard
 import React from 'react';
 
+import { useTranslation } from 'react-i18next';
+
 const StatsCard = ({ title, value, icon, trend, color = 'blue' }) => {
+    const { t } = useTranslation();
     const colorClasses = {
         blue: 'bg-blue-50 text-blue-600',
         green: 'bg-green-50 text-green-600',
@@ -25,7 +28,7 @@ const StatsCard = ({ title, value, icon, trend, color = 'blue' }) => {
                     <span className={trend >= 0 ? 'text-green-600' : 'text-red-600'}>
                         {trend >= 0 ? '↑' : '↓'} {Math.abs(trend)}%
                     </span>
-                    <span className="text-gray-400 ml-2">vs last month</span>
+                    <span className="text-gray-400 ms-2">{t('vsLastMonth', 'vs last month')}</span>
                 </div>
             )}
         </div>

@@ -1,0 +1,102 @@
+{
+    "login": "تسجيل الدخول",
+    "signup": "إنشاء حساب",
+    "myCourses": "دوراتي",
+    "continueLearning": "اكمل التعلم",
+    "lecturer": "محاضر",
+    "student": "طالب",
+    "email": "البريد الإلكتروني",
+    "password": "كلمة المرور",
+    "confirmPassword": "تأكيد كلمة المرور",
+    "fullName": "الاسم الكامل",
+    "alreadyHaveAccount": "لديك حساب بالفعل؟",
+    "dontHaveAccount": "ليس لديك حساب؟",
+    "loginButton": "تسجيل الدخول",
+    "signupButton": "إنشاء حساب",
+    "logout": "تسجيل الخروج",
+    "home": "الرئيسية",
+    "allCourses": "جميع الدورات",
+    "myLearning": "تعليمي",
+    "dashboard": "لوحة التحكم",
+    "about": "عن الموقع",
+    "contact": "اتصل بنا",
+    "teachOnApp": "أريد التدريس على المنصة",
+    "instructorSubtext": "أنشئ دورات واربح المال كمحاضر",
+    "name": "الاسم",
+    "heroTitle": "تعلم المهارات التي تؤهلك للعمل",
+    "heroSubtitle": "دورات عبر الإنترنت في البرمجة والبيانات والأعمال يقدمها خبراء الصناعة",
+    "startLearning": "ابدأ التعلم",
+    "browseCourses": "تصفح الدورات",
+    "trustedBy": "موثوق به من قبل متعلمين من",
+    "stats": {
+        "students": "طالب",
+        "courses": "دورة",
+        "instructors": "محاضر",
+        "rating": "متوسط التقييم"
+    },
+    "featuredCourses": {
+        "title": "تعلم من الأفضل",
+        "subtitle": "استكشف دوراتنا الأكثر شهرة التي يقدمها خبراء الصناعة",
+        "viewAll": "عرض جميع الدورات ←"
+    },
+    "howItWorks": {
+        "title": "كيف يعمل الموقع",
+        "subtitle": "ابدأ التعلم في أربع خطوات بسيطة فقط",
+        "step1": {
+            "title": "اختر دورة",
+            "desc": "تصفح أكثر من 1200 دورة"
+        },
+        "step2": {
+            "title": "تعلم بالسرعة التي تناسبك",
+            "desc": "ادرس في أي وقت وفي أي مكان"
+        },
+        "step3": {
+            "title": "احصل على شهادة",
+            "desc": "اكسب شهادات معتمدة"
+        },
+        "step4": {
+            "title": "طبق المهارات",
+            "desc": "ابني مشاريع حقيقية"
+        }
+    },
+    "cta": {
+        "title": "ابدأ رحلتك التعليمية اليوم",
+        "subtitle": "انضم إلى أكثر من 50,000 طالب يتعلمون مهارات جديدة",
+        "buttonLoggedOut": "سجل مجاناً",
+        "buttonLoggedIn": "تصفح الدورات"
+    },
+    "footer": {
+        "about": "عن الموقع",
+        "aboutUs": "معلومات عنا",
+        "careers": "وظائف",
+        "press": "الصحافة",
+        "support": "الدعم",
+        "contact": "اتصل بنا",
+        "helpCenter": "مركز المساعدة",
+        "faq": "الأسئلة الشائعة",
+        "legal": "قانوني",
+        "privacyPolicy": "سياسة الخصوصية",
+        "termsConditions": "الشروط والأحكام",
+        "cookiePolicy": "سياسة ملفات تعريف الارتباط",
+        "followUs": "تابعنا",
+        "copyright": "© 2025 منصة التعليم الإلكتروني. جميع الحقوق محفوظة."
+    },
+    "brandName": "إي ديو أكاديمي",
+    "dashboardOverview": "نظرة عامة على اللوحة",
+    "overview": "نظرة عامة",
+    "analytics": "التحليلات",
+    "settings": "الإعدادات",
+    "students": "الطلاب",
+    "revenue": "الإيرادات",
+    "enrollments": "الاشتراكات",
+    "progress": "التقدم",
+    "lastActive": "آخر نشاط",
+    "viewCourse": "عرض الدورة",
+    "curriculum": "المنهج الدراسي",
+    "createCourse": "إنشاء دورة جديدة",
+    "recentActivity": "النشاط الأخير",
+    "quickActions": "إجراءات سريعة",
+    "studentMessages": "رسائل الطلاب",
+    "earningsReport": "تقرير الأرباح",
+    "vsLastMonth": "مقارنة بالشهر الماضي"
+}

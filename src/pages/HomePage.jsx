@@ -1,6 +1,7 @@
 // Refactored HomePage - Clean architecture with auth integration
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next'; // Import useTranslation
 import { useAuth } from '../auth/context/AuthContext';
 import Container from '../components/common/Container';
 import SectionHeader from '../components/common/SectionHeader';
@@ -12,6 +13,7 @@ const HomePage = () => {
     const courses = getAllCourses();
     const navigate = useNavigate();
     const { isAuthenticated } = useAuth();
+    const { t } = useTranslation(); // Hook for translations
 
     const handleStartLearning = () => {
         if (isAuthenticated) {
@@ -33,22 +35,23 @@ const HomePage = () => {
                     <div className="grid md:grid-cols-2 gap-12 items-center">
                         <div>
                             <h1 className="text-5xl font-bold mb-6" style={{ color: 'var(--text-primary)' }}>
-                                Learn Skills That Get You Hired
+                                {t('heroTitle')}
                             </h1>
                             <p className="text-xl mb-8" style={{ color: 'var(--text-secondary)' }}>
-                                Online courses in programming, data, and business taught by industry experts
+                                {t('heroSubtitle')}
                             </p>
                             <div className="flex gap-4">
                                 <Button variant="primary" size="lg" onClick={handleStartLearning}>
-                                    Start Learning
+                                    {isAuthenticated ? t('cta.buttonLoggedIn') : t('startLearning')}
                                 </Button>
                                 <Button variant="secondary" size="lg" onClick={handleBrowseCourses}>
-                                    Browse Courses
+                                    {t('browseCourses')}
                                 </Button>
                             </div>
                         </div>
                         <div className="hidden md:block">
                             <div className="bg-gradient-to-br from-blue-100 to-cyan-100 rounded-2xl p-8 h-96 flex items-center justify-center">
+                                {/* Letter flips in RTL if text direction changes, but 'E' usually stands for brand */}
                                 <div className="text-6xl font-bold" style={{ color: 'var(--brand-primary)' }}>E</div>
                             </div>
                         </div>
@@ -60,7 +63,7 @@ const HomePage = () => {
             <section className="bg-white" style={{ paddingTop: '48px', paddingBottom: '48px', borderBottom: '1px solid var(--border-light)' }}>
                 <Container>
                     <p className="text-center text-sm font-medium mb-8" style={{ color: 'var(--text-muted)', letterSpacing: '0.05em' }}>
-                        TRUSTED BY LEARNERS FROM
+                        {t('trustedBy')}
                     </p>
                     <div className="flex justify-center items-center gap-12 flex-wrap opacity-40">
                         {['MIT', 'Stanford', 'Google', 'Microsoft', 'Meta', 'Amazon'].map((logo, index) => (
@@ -77,10 +80,10 @@ const HomePage = () => {
                 <Container>
                     <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
                         {[
-                            { number: '50,000+', label: 'Students', color: 'var(--brand-primary)' },
-                            { number: '1,200+', label: 'Courses', color: 'var(--brand-primary)' },
-                            { number: '300+', label: 'Instructors', color: 'var(--brand-primary)' },
-                            { number: '★ 4.8', label: 'Average Rating', color: 'var(--rating-gold)' }
+                            { number: '50,000+', label: t('stats.students'), color: 'var(--brand-primary)' },
+                            { number: '1,200+', label: t('stats.courses'), color: 'var(--brand-primary)' },
+                            { number: '300+', label: t('stats.instructors'), color: 'var(--brand-primary)' },
+                            { number: '★ 4.8', label: t('stats.rating'), color: 'var(--rating-gold)' }
                         ].map((stat, index) => (
                             <div key={index}>
                                 <p className="text-4xl font-bold mb-2" style={{ color: stat.color }}>{stat.number}</p>
@@ -95,8 +98,8 @@ const HomePage = () => {
             <section id="courses" className="bg-white" style={{ paddingTop: '80px', paddingBottom: '80px' }}>
                 <Container>
                     <SectionHeader
-                        title="Learn from the best"
-                        subtitle="Explore our most popular courses taught by industry experts"
+                        title={t('featuredCourses.title')}
+                        subtitle={t('featuredCourses.subtitle')}
                     />
                     <div className="mt-12">
                         <CourseGrid courses={courses} />
@@ -109,7 +112,7 @@ const HomePage = () => {
                             size="lg"
                             onClick={() => navigate('/catalog')}
                         >
-                            View All Courses →
+                            {t('featuredCourses.viewAll')}
                         </Button>
                     </div>
                 </Container>
@@ -119,15 +122,15 @@ const HomePage = () => {
             <section id="how-it-works" style={{ backgroundColor: 'var(--bg-secondary)', paddingTop: '80px', paddingBottom: '80px' }}>
                 <Container>
                     <SectionHeader
-                        title="How It Works"
-                        subtitle="Start learning in just four simple steps"
+                        title={t('howItWorks.title')}
+                        subtitle={t('howItWorks.subtitle')}
                     />
                     <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mt-16">
                         {[
-                            { step: '1', title: 'Choose a Course', desc: 'Browse 1,200+ courses' },
-                            { step: '2', title: 'Learn at Your Pace', desc: 'Study anytime, anywhere' },
-                            { step: '3', title: 'Get Certified', desc: 'Earn industry certificates' },
-                            { step: '4', title: 'Apply Skills', desc: 'Build real projects' }
+                            { step: '1', title: t('howItWorks.step1.title'), desc: t('howItWorks.step1.desc') },
+                            { step: '2', title: t('howItWorks.step2.title'), desc: t('howItWorks.step2.desc') },
+                            { step: '3', title: t('howItWorks.step3.title'), desc: t('howItWorks.step3.desc') },
+                            { step: '4', title: t('howItWorks.step4.title'), desc: t('howItWorks.step4.desc') }
                         ].map((item, index) => (
                             <div key={index} className="text-center">
                                 <div
@@ -149,13 +152,13 @@ const HomePage = () => {
                 <Container maxWidth="4xl">
                     <div className="text-center">
                         <h2 className="text-4xl font-bold mb-6" style={{ color: 'var(--text-primary)' }}>
-                            Start Your Learning Journey Today
+                            {t('cta.title')}
                         </h2>
                         <p className="text-lg mb-8" style={{ color: 'var(--text-secondary)' }}>
-                            Join 50,000+ students already learning new skills
+                            {t('cta.subtitle')}
                         </p>
                         <Button variant="primary" size="lg" onClick={handleStartLearning}>
-                            {isAuthenticated ? 'Browse Courses' : 'Sign Up Free'}
+                            {isAuthenticated ? t('cta.buttonLoggedIn') : t('cta.buttonLoggedOut')}
                         </Button>
                     </div>
                 </Container>

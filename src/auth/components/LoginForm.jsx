@@ -1,9 +1,11 @@
 // LoginForm.jsx - Login form component with validation
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import Button from '../../components/common/Button';
 
 const LoginForm = ({ onSubmit, loading = false }) => {
+    const { t, i18n } = useTranslation();
     const [formData, setFormData] = useState({
         email: '',
         password: ''
@@ -25,16 +27,16 @@ const LoginForm = ({ onSubmit, loading = false }) => {
 
         // Email validation
         if (!formData.email) {
-            newErrors.email = 'Email is required';
+            newErrors.email = t('email') + ' is required'; // Ideally add specific validation keys
         } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
-            newErrors.email = 'Email is invalid';
+            newErrors.email = t('email') + ' is invalid';
         }
 
         // Password validation
         if (!formData.password) {
-            newErrors.password = 'Password is required';
+            newErrors.password = t('password') + ' is required';
         } else if (formData.password.length < 6) {
-            newErrors.password = 'Password must be at least 6 characters';
+            newErrors.password = t('password') + ' must be at least 6 characters';
         }
 
         setErrors(newErrors);
@@ -66,7 +68,7 @@ const LoginForm = ({ onSubmit, loading = false }) => {
                     className="block text-sm font-medium mb-2"
                     style={{ color: 'var(--text-secondary)' }}
                 >
-                    Email
+                    {t('email')}
                 </label>
                 <input
                     type="email"
@@ -75,7 +77,7 @@ const LoginForm = ({ onSubmit, loading = false }) => {
                     value={formData.email}
                     onChange={handleChange}
                     style={inputStyle('email')}
-                    placeholder="Enter your email"
+                    placeholder={t('email')}
                     disabled={loading}
                     autoFocus
                 />
@@ -93,7 +95,7 @@ const LoginForm = ({ onSubmit, loading = false }) => {
                     className="block text-sm font-medium mb-2"
                     style={{ color: 'var(--text-secondary)' }}
                 >
-                    Password
+                    {t('password')}
                 </label>
                 <div className="relative">
                     <input
@@ -103,7 +105,7 @@ const LoginForm = ({ onSubmit, loading = false }) => {
                         value={formData.password}
                         onChange={handleChange}
                         style={inputStyle('password')}
-                        placeholder="Enter your password"
+                        placeholder={t('password')}
                         disabled={loading}
                     />
                     <button
@@ -113,7 +115,7 @@ const LoginForm = ({ onSubmit, loading = false }) => {
                         style={{ color: 'var(--text-muted)' }}
                         tabIndex="-1"
                     >
-                        {showPassword ? 'Hide' : 'Show'}
+                        {showPassword ? (i18n.language === 'ar' ? 'إخفاء' : 'Hide') : (i18n.language === 'ar' ? 'إظهار' : 'Show')}
                     </button>
                 </div>
                 {errors.password && (
@@ -131,18 +133,18 @@ const LoginForm = ({ onSubmit, loading = false }) => {
                 className="w-full"
                 disabled={loading}
             >
-                {loading ? 'Logging in...' : 'Login'}
+                {loading ? t('loginButton') + '...' : t('loginButton')}
             </Button>
 
             {/* Signup Link */}
             <p className="text-center text-sm" style={{ color: 'var(--text-secondary)' }}>
-                Don't have an account?{' '}
+                {t('dontHaveAccount')}{' '}
                 <Link
                     to="/signup"
                     className="font-semibold hover:underline"
                     style={{ color: 'var(--brand-primary)' }}
                 >
-                    Sign up
+                    {t('signupButton')}
                 </Link>
             </p>
         </form>

@@ -1,9 +1,11 @@
 // SignupForm.jsx - Signup form component with validation
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import Button from '../../components/common/Button';
 
 const SignupForm = ({ onSubmit, loading = false }) => {
+    const { t, i18n } = useTranslation();
     const [formData, setFormData] = useState({
         name: '',
         email: '',
@@ -33,30 +35,30 @@ const SignupForm = ({ onSubmit, loading = false }) => {
 
         // Name validation
         if (!formData.name.trim()) {
-            newErrors.name = 'Name is required';
+            newErrors.name = t('fullName') + ' is required';
         } else if (formData.name.trim().length < 2) {
-            newErrors.name = 'Name must be at least 2 characters';
+            newErrors.name = t('fullName') + ' must be at least 2 characters';
         }
 
         // Email validation
         if (!formData.email) {
-            newErrors.email = 'Email is required';
+            newErrors.email = t('email') + ' is required';
         } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
-            newErrors.email = 'Email is invalid';
+            newErrors.email = t('email') + ' is invalid';
         }
 
         // Password validation
         if (!formData.password) {
-            newErrors.password = 'Password is required';
+            newErrors.password = t('password') + ' is required';
         } else if (formData.password.length < 6) {
-            newErrors.password = 'Password must be at least 6 characters';
+            newErrors.password = t('password') + ' must be at least 6 characters';
         }
 
         // Confirm password validation
         if (!formData.confirmPassword) {
-            newErrors.confirmPassword = 'Please confirm your password';
+            newErrors.confirmPassword = t('confirmPassword') + ' is required';
         } else if (formData.password !== formData.confirmPassword) {
-            newErrors.confirmPassword = 'Passwords do not match';
+            newErrors.confirmPassword = 'Passwords do not match'; // Needs key
         }
 
         setErrors(newErrors);
@@ -89,7 +91,7 @@ const SignupForm = ({ onSubmit, loading = false }) => {
                     className="block text-sm font-medium mb-2"
                     style={{ color: 'var(--text-secondary)' }}
                 >
-                    Full Name
+                    {t('fullName')}
                 </label>
                 <input
                     type="text"
@@ -98,7 +100,7 @@ const SignupForm = ({ onSubmit, loading = false }) => {
                     value={formData.name}
                     onChange={handleChange}
                     style={inputStyle('name')}
-                    placeholder="Enter your full name"
+                    placeholder={t('fullName')}
                     disabled={loading}
                     autoFocus
                 />
@@ -116,7 +118,7 @@ const SignupForm = ({ onSubmit, loading = false }) => {
                     className="block text-sm font-medium mb-2"
                     style={{ color: 'var(--text-secondary)' }}
                 >
-                    Email
+                    {t('email')}
                 </label>
                 <input
                     type="email"
@@ -125,7 +127,7 @@ const SignupForm = ({ onSubmit, loading = false }) => {
                     value={formData.email}
                     onChange={handleChange}
                     style={inputStyle('email')}
-                    placeholder="Enter your email"
+                    placeholder={t('email')}
                     disabled={loading}
                 />
                 {errors.email && (
@@ -142,7 +144,7 @@ const SignupForm = ({ onSubmit, loading = false }) => {
                     className="block text-sm font-medium mb-2"
                     style={{ color: 'var(--text-secondary)' }}
                 >
-                    Password
+                    {t('password')}
                 </label>
                 <div className="relative">
                     <input
@@ -152,7 +154,7 @@ const SignupForm = ({ onSubmit, loading = false }) => {
                         value={formData.password}
                         onChange={handleChange}
                         style={inputStyle('password')}
-                        placeholder="Create a password"
+                        placeholder={t('password')}
                         disabled={loading}
                     />
                     <button
@@ -162,7 +164,7 @@ const SignupForm = ({ onSubmit, loading = false }) => {
                         style={{ color: 'var(--text-muted)' }}
                         tabIndex="-1"
                     >
-                        {showPassword ? 'Hide' : 'Show'}
+                        {showPassword ? (i18n.language === 'ar' ? 'إخفاء' : 'Hide') : (i18n.language === 'ar' ? 'إظهار' : 'Show')}
                     </button>
                 </div>
                 {errors.password && (
@@ -179,7 +181,7 @@ const SignupForm = ({ onSubmit, loading = false }) => {
                     className="block text-sm font-medium mb-2"
                     style={{ color: 'var(--text-secondary)' }}
                 >
-                    Confirm Password
+                    {t('confirmPassword')}
                 </label>
                 <input
                     type={showPassword ? 'text' : 'password'}
@@ -188,7 +190,7 @@ const SignupForm = ({ onSubmit, loading = false }) => {
                     value={formData.confirmPassword}
                     onChange={handleChange}
                     style={inputStyle('confirmPassword')}
-                    placeholder="Confirm your password"
+                    placeholder={t('confirmPassword')}
                     disabled={loading}
                 />
                 {errors.confirmPassword && (
@@ -211,10 +213,10 @@ const SignupForm = ({ onSubmit, loading = false }) => {
                 />
                 <label htmlFor="isLecturer" className="cursor-pointer">
                     <span className="block font-medium" style={{ color: 'var(--text-primary)' }}>
-                        I want to teach on E-Learning
+                        {t('teachOnApp')}
                     </span>
                     <span className="text-sm" style={{ color: 'var(--text-muted)' }}>
-                        Create courses and earn money as an instructor
+                        {t('instructorSubtext')}
                     </span>
                 </label>
             </div>
@@ -227,18 +229,18 @@ const SignupForm = ({ onSubmit, loading = false }) => {
                 className="w-full mt-6"
                 disabled={loading}
             >
-                {loading ? 'Creating account...' : 'Sign Up'}
+                {loading ? t('signupButton') + '...' : t('signupButton')}
             </Button>
 
             {/* Login Link */}
             <p className="text-center text-sm" style={{ color: 'var(--text-secondary)' }}>
-                Already have an account?{' '}
+                {t('alreadyHaveAccount')}{' '}
                 <Link
                     to="/login"
                     className="font-semibold hover:underline"
                     style={{ color: 'var(--brand-primary)' }}
                 >
-                    Login
+                    {t('login')}
                 </Link>
             </p>
         </form>

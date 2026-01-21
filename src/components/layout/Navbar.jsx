@@ -3,18 +3,21 @@
 
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import Container from '../common/Container';
+import LanguageSwitcher from '../LanguageSwitcher';
 
 const Navbar = ({ user, onLogout }) => {
     const navigate = useNavigate();
+    const { t } = useTranslation();
 
     const navLinks = [
-        { name: 'Home', path: '/' },
-        { name: 'All Courses', path: '/catalog' },
-        ...(user && user.role !== 'lecturer' ? [{ name: 'My Learning', path: '/my-courses' }] : []),
-        ...(user?.role === 'lecturer' ? [{ name: 'Dashboard', path: '/lecturer/dashboard' }] : []),
-        { name: 'About', path: '/about' },
-        { name: 'Contact', path: '/contact' }
+        { name: t('home'), path: '/' },
+        { name: t('allCourses'), path: '/catalog' },
+        ...(user && user.role !== 'lecturer' ? [{ name: t('myLearning'), path: '/my-courses' }] : []),
+        ...(user?.role === 'lecturer' ? [{ name: t('dashboard'), path: '/lecturer/dashboard' }] : []),
+        { name: t('about'), path: '/about' },
+        { name: t('contact'), path: '/contact' }
     ];
 
     return (
@@ -27,10 +30,12 @@ const Navbar = ({ user, onLogout }) => {
                     {/* Logo */}
                     <Link
                         to="/"
-                        className="text-2xl font-bold hover:opacity-80 transition"
+                        className="hover:opacity-80 transition"
                         style={{ color: 'var(--brand-primary)' }}
                     >
-                        E-Learning
+                        <span className={`text-2xl font-extrabold tracking-wide ${t('lang') === 'ar' ? 'font-brand' : 'font-sans'}`}>
+                            {t('brandName', 'EduAcademy')}
+                        </span>
                     </Link>
 
                     {/* Navigation Links - Desktop */}
@@ -54,6 +59,7 @@ const Navbar = ({ user, onLogout }) => {
 
                     {/* Auth Section */}
                     <div className="flex items-center gap-3">
+                        <LanguageSwitcher />
                         {user ? (
                             <>
                                 <span className="text-sm hidden sm:block" style={{ color: 'var(--text-muted)' }}>
@@ -76,7 +82,7 @@ const Navbar = ({ user, onLogout }) => {
                                         e.target.style.boxShadow = 'none';
                                     }}
                                 >
-                                    Logout
+                                    {t('logout')}
                                 </button>
                             </>
                         ) : (
@@ -86,7 +92,7 @@ const Navbar = ({ user, onLogout }) => {
                                     className="px-4 py-2 text-sm font-medium"
                                     style={{ color: 'var(--text-primary)' }}
                                 >
-                                    Login
+                                    {t('login')}
                                 </button>
                                 <button
                                     onClick={() => navigate('/signup')}
@@ -96,7 +102,7 @@ const Navbar = ({ user, onLogout }) => {
                                         color: 'white'
                                     }}
                                 >
-                                    Sign Up
+                                    {t('signupButton')}
                                 </button>
                             </>
                         )}

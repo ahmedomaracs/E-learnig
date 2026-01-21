@@ -16,7 +16,7 @@ const Dashboard = () => {
                             <div className="flex-shrink-0 bg-indigo-500 rounded-md p-3">
                                 <span className="text-white text-2xl">📚</span>
                             </div>
-                            <div className="ml-5 w-0 flex-1">
+                            <div className="ms-5 w-0 flex-1">
                                 <dl>
                                     <dt className="text-sm font-medium text-gray-500 truncate">Enrolled Courses</dt>
                                     <dd className="text-lg font-medium text-gray-900">4</dd>
@@ -33,7 +33,7 @@ const Dashboard = () => {
                             <div className="flex-shrink-0 bg-green-500 rounded-md p-3">
                                 <span className="text-white text-2xl">✅</span>
                             </div>
-                            <div className="ml-5 w-0 flex-1">
+                            <div className="ms-5 w-0 flex-1">
                                 <dl>
                                     <dt className="text-sm font-medium text-gray-500 truncate">Completed</dt>
                                     <dd className="text-lg font-medium text-gray-900">2</dd>
@@ -50,7 +50,7 @@ const Dashboard = () => {
                             <div className="flex-shrink-0 bg-yellow-500 rounded-md p-3">
                                 <span className="text-white text-2xl">🏆</span>
                             </div>
-                            <div className="ml-5 w-0 flex-1">
+                            <div className="ms-5 w-0 flex-1">
                                 <dl>
                                     <dt className="text-sm font-medium text-gray-500 truncate">Certificates</dt>
                                     <dd className="text-lg font-medium text-gray-900">1</dd>
